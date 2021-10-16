@@ -8,6 +8,8 @@ set(PROJECT_NAME "Quaternion")
 
 add_library(${PROJECT_NAME}
         Quaternion.cpp
-        Quaternion.h)
+        QuaternionSlerp.cpp
+        Quaternion.h
+        QuaternionSlerp.h)
 
 target_include_directories("${PROJECT_NAME}" PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}" )

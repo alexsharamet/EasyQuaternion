@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 
 constexpr double Accuracy = 1e-5;
 
@@ -7,6 +8,7 @@ class Quaternion
 public:
     Quaternion() = default;
     Quaternion(double w, double x, double y, double z);
+    Quaternion(double x, double y, double z, std::string order);
 
     Quaternion(const Quaternion&) = default;
     Quaternion(Quaternion&&) = default;

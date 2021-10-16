@@ -7,6 +7,20 @@ Quaternion::Quaternion(double w, double x, double y, double z)
         : m_w(w), m_x(x), m_y(y), m_z(z)
 {}
 
+Quaternion::Quaternion(double x, double y, double z, std::string order)
+{
+    std::unordered_map<char, Quaternion> m = {
+            {'x', Quaternion{cos(x/2.0), sin(x/2.0), 0,          0}},
+            {'y', Quaternion{cos(y/2.0), 0,          sin(y/2.0), 0}},
+            {'z', Quaternion{cos(z/2.0), 0,          0,          sin(z/2.0) }}
+    };
+
+    Quaternion q{ 1,0,0,0 };
+    for (int i = 0; i < 3; ++i)
+        q = q * m[order[i]];
+    *this = q;
+}
+
 Quaternion ToQuaternion(double yaw, double pitch, double roll) // yaw (Z), pitch (Y), roll (X)
 {
     // Abbreviations for the various angular functions
